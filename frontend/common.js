@@ -210,4 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('largeText', active);
         });
     }
+    // Expose functions to window for module support
+    window.triggerTranslation = triggerTranslation;
 });
