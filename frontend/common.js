@@ -80,12 +80,18 @@ const footerHTML = `
 </footer>
 `;
 
-document.addEventListener('DOMContentLoaded', () => {
+const initApp = () => {
     // Inject Navbar
-    document.body.insertAdjacentHTML('afterbegin', navbarHTML);
+    if (!document.getElementById('header')) {
+        document.body.insertAdjacentHTML('afterbegin', navbarHTML);
+    }
     
     // Inject Footer
-    document.body.insertAdjacentHTML('beforeend', footerHTML);
+    if (!document.querySelector('footer')) {
+        document.body.insertAdjacentHTML('beforeend', footerHTML);
+    }
+
+    // ... (rest of the logic)
 
     // Update Auth Section
     const authSection = document.getElementById('authSection');
@@ -212,4 +218,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Expose functions to window for module support
     window.triggerTranslation = triggerTranslation;
-});
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}
