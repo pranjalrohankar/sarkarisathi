@@ -145,14 +145,14 @@
         </div>
     </main>
 
-    <script type="module" src="/common.js"></script>
+    <script type="module" src="./common.js"></script>
     <script>
         // Check if user is logged in before loading the assistant
         if (!localStorage.getItem('token')) {
             window.location.href = 'login.html';
         }
     </script>
-    <script type="module" src="/script.js"></script>
+    <script type="module" src="./script.js"></script>
     <script>lucide.createIcons();</script>
 </body>
 </html>
