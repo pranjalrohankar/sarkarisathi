@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarkari Yojana Catalog | SarkariDost</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .scheme-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .scheme-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <section class="schemes-header">
+            <div class="container">
+                <h1>Government Schemes Directory</h1>
+                <p>One place for all important information about government schemes with photos.</p>
+            </div>
+        </section>
+
+        <section class="schemes-body">
+            <div class="container">
+                <div class="scheme-filters">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Housing</button>
+                    <button class="filter-btn">Health</button>
+                    <button class="filter-btn">Farmers</button>
+                    <button class="filter-btn">Education</button>
+                    <button class="filter-btn">Business</button>
+                </div>
+
+                <div class="schemes-grid">
+                    <!-- Scheme 1 -->
+                    <div class="scheme-card glass" data-category="Housing">
+                        <img src="assets/housing.png" alt="PMAY Housing">
+                        <div>
+                            <span class="scheme-tag">Housing</span>
+                            <h3>PM Awas Yojana (PMAY)</h3>
+                            <p>Government assistance to provide every family with their own permanent house.</p>
+                            <ul style="margin: 15px 0; font-size: 0.9rem; color: var(--text-muted);">
+                                <li><i data-lucide="check-circle" style="width:16px;height:16px;color:#2e7d32;vertical-align:middle;margin-right:4px;"></i> Eligibility: Low income families</li>
+                                <li><i data-lucide="file-check" style="width:16px;height:16px;color:#f57c00;vertical-align:middle;margin-right:4px;"></i> Docs: Aadhar, Income Certificate</li>
+                            </ul>
+                        </div>
+                        <a href="assistant.html?scheme=PM Awas Yojana" class="btn btn-secondary" style="width: 100%; text-align: center;">Ask SarkariDost</a>
+                    </div>
+
+                    <!-- Scheme 2 -->
+                    <div class="scheme-card glass" data-category="Health">
+                        <img src="assets/health.png" alt="Ayushman Bharat">
+                        <div>
+                            <span class="scheme-tag">Health</span>
+                            <h3>Ayushman Bharat (PM-JAY)</h3>
+                            <p>Free treatment up to 5 Lakhs every year for every eligible family.</p>
+                            <ul style="margin: 15px 0; font-size: 0.9rem; color: var(--text-muted);">
+                                <li><i data-lucide="check-circle" style="width:16px;height:16px;color:#2e7d32;vertical-align:middle;margin-right:4px;"></i> Eligibility: SECC 2011 list families</li>
+                                <li><i data-lucide="file-check" style="width:16px;height:16px;color:#f57c00;vertical-align:middle;margin-right:4px;"></i> Docs: Ration Card, Aadhar</li>
+                            </ul>
+                        </div>
+                        <a href="assistant.html?scheme=Ayushman Bharat" class="btn btn-secondary" style="width: 100%; text-align: center;">Ask SarkariDost</a>
+                    </div>
+
+                    <!-- Scheme 3 -->
+                    <div class="scheme-card glass" data-category="Farmers">
+                        <img src="assets/farmer.png" alt="PM Kisan">
+                        <div>
+                            <span class="scheme-tag">Farmers</span>
+                            <h3>PM Kisan Samman Nidhi</h3>
+                            <p>Direct bank account transfer of 6000 rupees annually to farmers.</p>
+                            <ul style="margin: 15px 0; font-size: 0.9rem; color: var(--text-muted);">
+                                <li><i data-lucide="check-circle" style="width:16px;height:16px;color:#2e7d32;vertical-align:middle;margin-right:4px;"></i> Eligibility: Small & Marginal Farmers</li>
+                                <li><i data-lucide="file-check" style="width:16px;height:16px;color:#f57c00;vertical-align:middle;margin-right:4px;"></i> Docs: Land Docs, Bank Details</li>
+                            </ul>
+                        </div>
+                        <a href="assistant.html?scheme=PM Kisan Samman Nidhi" class="btn btn-secondary" style="width: 100%; text-align: center;">Ask SarkariDost</a>
+                    </div>
+
+                    <!-- Scheme 4 -->
+                    <div class="scheme-card glass" data-category="Education">
+                        <img src="assets/education.png" alt="Scholarships">
+                        <div>
+                            <span class="scheme-tag">Education</span>
+                            <h3>National Scholarship Portal</h3>
+                            <p>Various types of scholarships and financial help for students.</p>
+                            <ul style="margin: 15px 0; font-size: 0.9rem; color: var(--text-muted);">
+                                <li><i data-lucide="check-circle" style="width:16px;height:16px;color:#2e7d32;vertical-align:middle;margin-right:4px;"></i> Eligibility: Merit-based & Category-based</li>
+                                <li><i data-lucide="file-check" style="width:16px;height:16px;color:#f57c00;vertical-align:middle;margin-right:4px;"></i> Docs: Marksheet, Caste Certificate</li>
+                            </ul>
+                        </div>
+                        <a href="assistant.html?scheme=National Scholarship Portal" class="btn btn-secondary" style="width: 100%; text-align: center;">Ask SarkariDost</a>
+                    </div>
+
+                    <!-- Scheme 5 -->
+                    <div class="scheme-card glass" data-category="Women">
+                        <img src="assets/women.png" alt="Sukanya Samriddhi">
+                        <div>
+                            <span class="scheme-tag">Women</span>
+                            <h3>Sukanya Samriddhi Yojana</h3>
+                            <p>Best savings scheme for the future and education of the girl child.</p>
+                            <ul style="margin: 15px 0; font-size: 0.9rem; color: var(--text-muted);">
+                                <li><i data-lucide="check-circle" style="width:16px;height:16px;color:#2e7d32;vertical-align:middle;margin-right:4px;"></i> Eligibility: Girl child below 10 years</li>
+                                <li><i data-lucide="file-check" style="width:16px;height:16px;color:#f57c00;vertical-align:middle;margin-right:4px;"></i> Docs: Birth Certificate, Parent Aadhar</li>
+                            </ul>
+                        </div>
+                        <a href="assistant.html?scheme=Sukanya Samriddhi Yojana" class="btn btn-secondary" style="width: 100%; text-align: center;">Ask SarkariDost</a>
+                    </div>
+
+                    <!-- Scheme 6 -->
+                    <div class="scheme-card glass" data-category="Business">
+                        <img src="assets/business.png" alt="PM Mudra">
+                        <div>
+                            <span class="scheme-tag">Business</span>
+                            <h3>PM Mudra Yojana</h3>
+                            <p>Loans up to 10 Lakhs for starting or expanding small businesses.</p>
+                            <ul style="margin: 15px 0; font-size: 0.9rem; color: var(--text-muted);">
+                                <li><i data-lucide="check-circle" style="width:16px;height:16px;color:#2e7d32;vertical-align:middle;margin-right:4px;"></i> Eligibility: Small entrepreneurs</li>
+                                <li><i data-lucide="file-check" style="width:16px;height:16px;color:#f57c00;vertical-align:middle;margin-right:4px;"></i> Docs: Business Plan, KYC</li>
+                            </ul>
+                        </div>
+                        <a href="assistant.html?scheme=PM Mudra Yojana" class="btn btn-secondary" style="width: 100%; text-align: center;">Ask SarkariDost</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="common.js"></script>
+    <script>lucide.createIcons();</script>
+    <script>
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const schemeCards = document.querySelectorAll('.scheme-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.textContent.trim();
+
+                schemeCards.forEach(card => {
+                    if (filter === 'All' || card.dataset.category === filter) {
+                        card.style.display = 'flex';
+                        card.style.animation = 'fadeIn 0.3s ease-out';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

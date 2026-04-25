@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant | SarkariDost</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .message {
+            margin-bottom: 20px;
+            max-width: 85%;
+            padding: 18px 22px;
+            border-radius: 20px;
+            font-size: 1rem;
+            line-height: 1.7;
+            position: relative;
+            animation: msgIn 0.3s ease-out;
+        }
+        @keyframes msgIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .user-message {
+            background: linear-gradient(135deg, #f57c00, #ff9800);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+            border-bottom-right-radius: 5px;
+            font-weight: 500;
+        }
+        .ai-message {
+            background: var(--white);
+            color: var(--text-main);
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .ai-message strong {
+            color: var(--primary-dark);
+        }
+        .ai-bullet {
+            display: block;
+            padding: 4px 0 4px 10px;
+            border-left: 3px solid var(--primary);
+            margin: 4px 0;
+            background: var(--primary-light);
+            border-radius: 0 6px 6px 0;
+        }
+        .ai-step {
+            display: block;
+            padding: 6px 0 6px 8px;
+            margin: 4px 0;
+        }
+        .step-num {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 22px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        /* Typing indicator */
+        .typing-indicator {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            padding: 18px 25px;
+        }
+        .typing-indicator .dot {
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite;
+            opacity: 0.6;
+        }
+        .typing-indicator .dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator .dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes bounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+        .chat-messages {
+            display: flex;
+            flex-direction: column;
+        }
+        @media (max-width: 600px) {
+            .message {
+                max-width: 92%;
+                padding: 14px 16px;
+                font-size: 0.9rem;
+            }
+            .chat-header h3 { font-size: 1rem; }
+            .chat-input-area { padding: 12px; gap: 8px; }
+            .chat-input-area input { padding: 12px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body style="background: #fdf2e9;">
+
+    <main class="assistant-container">
+        <div class="container">
+            <div class="chat-box glass">
+                <div class="chat-header">
+                    <div class="bot-avatar" style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;"><i data-lucide="bot" style="width:26px;height:26px;color:white;"></i></div>
+                    <div>
+                        <h3 style="margin: 0;">SarkariDost</h3>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <p style="font-size: 0.8rem; opacity: 0.8; margin: 0;">Online</p>
+                            <span id="queryBadge" class="query-badge" style="display:none; font-size: 0.7rem; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 10px; color: white;">Queries: 5/5</span>
+                        </div>
+                    </div>
+                    <div style="margin-left: auto;">
+                        <div class="voice-control">
+                            <span id="voiceStatus">Voice: ON</span>
+                            <div class="voice-toggle" id="toggleVoice" title="Mute/Unmute AI">
+                                <i data-lucide="volume-2" id="voiceIcon" style="width:20px;height:20px;color:white;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai-message">
+                        Hello! I am your SarkariDost. Which government scheme would you like to know about today? Just click the mic and speak or type your question below.
+                    </div>
+                </div>
+
+                <div class="recognized-bar" id="recognizedText" style="padding: 10px 20px; background: #fff8f0; font-size: 0.9rem; color: var(--primary-dark); border-top: 1px solid #eee;">
+                    Click the mic or type to start...
+                </div>
+
+                <div class="chat-input-area">
+                    <button class="mic-btn" id="micBtn" title="Speak Now"><i data-lucide="mic" style="width:24px;height:24px;"></i></button>
+                    <input type="text" id="textInput" placeholder="Type your question here...">
+                    <button class="btn btn-primary" id="submitText" style="padding: 12px 20px; display:flex; align-items:center; gap:6px;"><i data-lucide="send" style="width:18px;height:18px;"></i> Send</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="common.js"></script>
+    <script>
+        // Check if user is logged in before loading the assistant
+        if (!localStorage.getItem('token')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+    <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
