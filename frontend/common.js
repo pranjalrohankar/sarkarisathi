@@ -42,7 +42,7 @@ const navbarHTML = `
                 <div class="nav-cta" id="authSection">
                     <a href="login.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Login / Signup</a>
                 </div>
-
+                <span id="membershipBadge" class="plan-badge"></span>
             </div>
         </nav>
     </div>

@@ -858,16 +858,29 @@
                         showModal('Verifying...', 'We are confirming your payment with the bank.');
                         
                         const API_BASE = window.location.origin.includes('localhost') ? 'http://localhost:8081' : '';
+                        const user = JSON.parse(localStorage.getItem('user'));
                         const verifyRes = await fetch(`${API_BASE}/api/payment/verify`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({
                                 razorpay_order_id: response.razorpay_order_id,
                                 razorpay_payment_id: response.razorpay_payment_id,
-                                razorpay_signature: response.razorpay_signature
+                                razorpay_signature: response.razorpay_signature,
+                                planName: planName,
+                                userId: user ? user.id : null
                             })
                         });
                         const verifyData = await verifyRes.json();
+                                                // After successful verification, fetch updated user profile
+                        const profileRes = await fetch(`${API_BASE}/api/profile`, {
+                            method: 'GET',
+                            headers: { 'Authorization': localStorage.getItem('token') ? `Bearer ${localStorage.getItem('token')}` : '' }
+                        });
+                        const { user: updatedUser } = await profileRes.json();
+                        // Update local storage and badge
+                        localStorage.setItem('user', JSON.stringify(updatedUser));
+                        const badgeEl = document.getElementById('membershipBadge');
+                        if (badgeEl) badgeEl.textContent = `${updatedUser.currentPlan} Plan`;
                         showModal('Success!', 'Payment verified! Your Pro features are now active.', 'check-circle', true);
                     },
                     "prefill": {
