@@ -42,6 +42,7 @@ const navbarHTML = `
                 <div class="nav-cta" id="authSection">
                     <a href="login.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Login / Signup</a>
                 </div>
+
             </div>
         </nav>
     </div>
@@ -110,11 +111,7 @@ const initApp = () => {
             </div>
         `;
         
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            window.location.reload();
-        });
+
     }
 
     // Inject Accessibility Panel
