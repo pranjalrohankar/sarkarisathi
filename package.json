@@ -2,7 +2,6 @@
   "name": "sarkarisathi-root",
   "version": "1.0.0",
   "scripts": {
-    "build": "cd frontend && npm install && npm run build",
-    "install-backend": "cd backend && npm install"
+    "build": "cd backend && npm install && cd ../frontend && npm install && npm run build"
   }
 }
